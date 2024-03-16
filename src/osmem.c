@@ -193,8 +193,15 @@ void os_free(void *ptr)
 
 void *os_calloc(size_t nmemb, size_t size)
 {
-	/* TODO: Implement os_calloc */
-	return NULL;
+	/* Implement os_calloc */
+	if (nmemb == 0 || size == 0)
+		return NULL;
+
+	void *p = general_allocation(nmemb * size, getpagesize());
+
+	memset(p, 0, nmemb * size);
+
+	return p;
 }
 
 void *os_realloc(void *ptr, size_t size)
