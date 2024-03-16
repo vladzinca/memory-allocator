@@ -173,7 +173,22 @@ void *os_malloc(size_t size)
 
 void os_free(void *ptr)
 {
-	/* TODO: Implement os_free */
+	/* Implement os_free */
+	if (ptr == NULL)
+		return;
+
+	struct block_meta *metadata = (struct block_meta *)ptr;
+	metadata = metadata - 1;
+
+	if (metadata->status == STATUS_ALLOC)
+	{
+		metadata->status = STATUS_FREE;
+	}
+	else
+	{
+		int i = munmap(ptr - sizeof(struct block_meta), metadata->size + sizeof(struct block_meta));
+		DIE(i == -1, "munmap() failed");
+	}
 }
 
 void *os_calloc(size_t nmemb, size_t size)
