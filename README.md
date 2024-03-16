@@ -1,4 +1,4 @@
-# Mini libc
+# Memory allocator
 
 ## 💭 What is it?
 
