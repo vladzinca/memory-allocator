@@ -10,6 +10,7 @@
 
 void coalesce_blocks(struct block_meta *heap_start);
 struct block_meta *check_for_block_reuse(struct block_meta *heap_start, size_t needed_size);
+size_t get_maximum_possible_size(struct block_meta *metadata);
 void *general_allocation(size_t size, size_t threshold);
 
 void *os_malloc(size_t size);
