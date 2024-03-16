@@ -20,6 +20,8 @@
 		}									\
 	} while (0)
 
+#define MMAP_THRESHOLD 128 * 1024
+
 /* Structure to hold memory block metadata */
 struct block_meta {
 	size_t size;
